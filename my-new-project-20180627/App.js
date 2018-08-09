@@ -8,6 +8,7 @@ import {
   StatusBar,
   StyleSheet,
   Button,
+  ImageBackground,
 } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import { BarCodeScanner, Permissions } from 'expo';
@@ -18,6 +19,10 @@ class HomeView extends Component {
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
+      <ImageBackground 
+        source={require('./assets/Screenshot.png')}
+        style={{width: '100%', height: '100%'}}
+      > 
         <Text style={styles.paragraph1}>
           Welcome to the book library!
         </Text>
@@ -67,6 +72,7 @@ class HomeView extends Component {
           // }}
         />
         <StatusBar hidden />
+        </ImageBackground>
       </View>
     );
   }
@@ -176,7 +182,7 @@ class ScannerView extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'rgba(138,187,216,0.5)',
     alignItems: 'center',
     justifyContent: 'center',
   },
