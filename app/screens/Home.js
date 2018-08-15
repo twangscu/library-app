@@ -43,7 +43,7 @@ export default class Home extends React.Component {
   };
 
   render() {
-  return <View style={{ flex: 1, paddingVertical: 10 }}>
+  return <View style={{ paddingVertical: 10 }}>
       <ScrollView contentContainerStyle={{ paddingVertical: 20 }}>
         {images.map(({ name, image, url, key }) => (
           <Card title={`CARD ${key}`} image={image} key={key}>
