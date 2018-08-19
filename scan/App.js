@@ -5,7 +5,8 @@ import {
     View,
     Text,
     StyleSheet,
-    Alert} from 'react-native';
+    Alert,
+    ImageBackground} from 'react-native';
 import {Button} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Entypo';
 import {Constants, BarCodeScanner, Permissions} from 'expo';
@@ -17,10 +18,7 @@ class Greeting extends Component {
         return (
             <View>
                 <Text style={{fontSize: 30}}>
-                    Welcome to {this.props.name}'
-                </Text>
-                <Text style={{fontSize: 30}}>
-                    Book Barcode Reader
+                    Please checkout the book.
                 </Text>
             </View>
 
@@ -77,14 +75,14 @@ export default class BarCodeReader extends Component {
 
     _handleBarCodeReader = data => {   // data是輸入
         Alert.alert(
-            'Reader Scan successful!'+data['data']
+            'User Scan successful!'+data['data']
         );
         this.setState({allowScanReader: false, allowScanBook: false, hasReaderResult: true, ReaderData: data})
     };
 
     _handleBarCodeBook = data => {   // data是輸入
         Alert.alert(
-            'Book Scan successful!'
+            'Book Scan successful!'+data['data']
         );
         this.setState({allowScanReader: false, allowScanBook: false, hasBookResult: true, BookData: data})
     };
@@ -96,24 +94,25 @@ export default class BarCodeReader extends Component {
     };
     _onPressConfirm = () => {  //() reques.POST
         Alert.alert(
-            'SAVE TO DB'
+            'Comfirmed'
         );
         this.setState({})
     };
     render() {
         return (
-            <View>
-                {/*<View style={{alignItems: 'center', height: 100}}></View>*/}
-
-
-                {/*<View style={{alignItems: 'center', height: 150}}>*/}
-                    {/*<Greeting name='Xiaoxiao'/>*/}
-                {/*</View>*/}
-
-
+            <ImageBackground source = {{uri: 'https://www.somervillepubliclibrary.org/sites/default/files/reading.png'}}
+                             style={styles.backgroundStyle}>
+            <View style = {styles.container}>
+                <View style={{alignItems: 'center', height: 100}}></View>
 
 
                 <View style={{alignItems: 'center', height: 100}}>
+                    <Greeting name='Xiaoxiao'/>
+                </View>
+
+
+
+                <View style={{alignItems: 'center', height: 0}}>
                     {
                         this.state.hasCameraPermission === null ?
                             <Text>Requesting for camera permission</Text> :
@@ -138,7 +137,7 @@ export default class BarCodeReader extends Component {
 
                 {
                     this.state.allowScanBook == false && this.state.hasBookResult === true ?
-                        <View style={{alignItems: 'center', height: 100}}>
+                        <View style={{alignItems: 'center', height: 50}}>
                             <Text style={{fontSize: 15}}>
                                 Checkout Book:
                             </Text>
@@ -149,12 +148,12 @@ export default class BarCodeReader extends Component {
                                 Title: {JSON.parse(this.state.BookData["data"])["Title"]}
                             </Text>
                         </View> :
-                        <View style={{alignItems: 'center', height: 100}}></View>
+                        <View style={{alignItems: 'center', height: 50}}></View>
                 }
 
                 {
                     this.state.allowScanReader == false && this.state.hasReaderResult === true ?
-                        <View style={{alignItems: 'center', height: 100}}>
+                        <View style={{alignItems: 'center', height: 50}}>
                             <Text style={{fontSize: 15}}>
                                 Customer:
                             </Text>
@@ -165,14 +164,14 @@ export default class BarCodeReader extends Component {
                                 Title: {JSON.parse(this.state.ReaderData["data"])["Title"]}
                             </Text>
                         </View> :
-                        <View style={{alignItems: 'center', height: 100}}></View>
+                        <View style={{alignItems: 'center', height: 0}}></View>
                 }
 
 
                 <View style={{alignItems: 'center',flex: 1, flexDirection: 'row', justifyContent: 'space-evenly'}}>
 
 
-                    <View style={{ height: 50}}>
+                    <View style={{ height: 0}}>
                         <Button
                             onPress={this._onPressReader}
                             icon={
@@ -182,13 +181,9 @@ export default class BarCodeReader extends Component {
                                     color='rgba(4, 87, 108, 1)'
                                 />
                             }
-                            title="SACN READER"
-                            titleStyle={{ fontWeight: "700", color:'rgba(4, 87, 108, 1)',alignItems: 'center' }}
-                            buttonStyle={{
-                                backgroundColor: "rgba(255, 255, 2, 0.77)",
-                                width: 150,
-                                height: 150,
-                            }}
+                            title="SACN USER"
+                            titleStyle={styles.textStyle}
+                            buttonStyle= {styles.buttonStyle}
                             containerStyle={{marginTop: 20}}
                         />
                     </View>
@@ -196,7 +191,7 @@ export default class BarCodeReader extends Component {
 
 
 
-                    <View style={{ height: 50}}>
+                    <View style={{ height: 0}}>
                         <Button
                             onPress={this._onPressBook}
                             icon={
@@ -207,12 +202,8 @@ export default class BarCodeReader extends Component {
                                 />
                             }
                             title="SACN BOOK"
-                            titleStyle={{ fontWeight: "700", color:'rgba(4, 87, 108, 1)',alignItems: 'center' }}
-                            buttonStyle={{
-                                backgroundColor: "rgba(255, 255, 2, 0.77)",
-                                width: 150,
-                                height: 150,
-                            }}
+                            titleStyle={styles.textStyle}
+                            buttonStyle= {styles.buttonStyle}
                             containerStyle={{marginTop: 20}}
                         />
                     </View>
@@ -224,21 +215,18 @@ export default class BarCodeReader extends Component {
                 
 
 
-                <View style={{ height: 50}}>
+                <View style={{ height: 150}}>
                     <Button
                         onPress={this._onPressConfirm}
                         title="CONFIRM"
-                        titleStyle={{ fontWeight: "700", color:'rgba(4, 87, 108, 1)',alignItems: 'center' }}
-                        buttonStyle={{
-                            backgroundColor: "rgba(255, 255, 2, 0.77)",
-                            width: 150,
-                            height: 50,
-                        }}
+                        titleStyle={styles.textStyle}
+                        buttonStyle= {styles.buttonStyle}
                         containerStyle={{marginTop: 20}}
                     />
                 </View>
 
             </View>
+            </ImageBackground>
         );
     }
 }
@@ -248,5 +236,33 @@ const styles = StyleSheet.create({
     camera: {
         height: 200,
         width: 300,
-    }
+    },
+    buttonStyle: {
+        borderRadius: 1,
+        marginLeft: 3,
+        marginRight: 3,
+        //marginBottom: 100,
+        height: 90,
+        width: 190,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgb(51, 63, 80)'
+    },
+
+    textStyle: {
+        alignSelf: 'center',
+        color: '#fff',
+        fontSize: 20,
+        fontWeight: '600'
+    },
+    backgroundStyle: {
+        width: '100%',
+        height: '100%'
+    },
+    container: {
+        flex: 1,
+        backgroundColor: 'rgba(138,187,216,0.5)',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+    },
 });
