@@ -96,6 +96,17 @@ export default class BarCodeReader extends Component {
         Alert.alert(
             'Comfirmed'
         );
+        fetch('https://p0kvnd5htd.execute-api.us-east-2.amazonaws.com/test/book', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                bookdata: this.state.BookData["data"],
+                readerdata: this.state.ReaderData["data"],
+            }),
+        });
         this.setState({})
     };
     render() {
@@ -189,8 +200,6 @@ export default class BarCodeReader extends Component {
                     </View>
 
 
-
-
                     <View style={{ height: 0}}>
                         <Button
                             onPress={this._onPressBook}
@@ -210,9 +219,6 @@ export default class BarCodeReader extends Component {
 
 
                 </View>
-
-
-                
 
 
                 <View style={{ height: 150}}>
