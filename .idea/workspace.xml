@@ -29,14 +29,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SecondScreen.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SecondScreen.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/returnBook/screens/SecondScreen.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="84" column="80" lean-forward="true" selection-start-line="84" selection-start-column="80" selection-end-line="84" selection-end-column="80" />
+            <state relative-caret-position="385">
+              <caret line="94" column="6" lean-forward="true" selection-start-line="94" selection-start-column="6" selection-end-line="94" selection-end-column="6" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="auth.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/library-app-raghavgr/app/auth.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" column="11" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -108,6 +117,11 @@
       </file>
     </leaf>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>then</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -126,11 +140,11 @@
       <path value="$PROJECT_DIR$/scan/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="441" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="135" />
     <option name="y" value="23" />
     <option name="width" value="991" />
-    <option name="height" value="724" />
+    <option name="height" value="716" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -149,6 +163,12 @@
               <item name="library-app" type="b2602c69:ProjectViewProjectNode" />
               <item name="library-app" type="462c0819:PsiDirectoryNode" />
               <item name="library-app-raghavgr" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="library-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="library-app" type="462c0819:PsiDirectoryNode" />
+              <item name="library-app-raghavgr" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="library-app" type="b2602c69:ProjectViewProjectNode" />
@@ -219,28 +239,28 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1534703885063</updated>
-      <workItem from="1534703886553" duration="3433000" />
+      <workItem from="1534703886553" duration="4165000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3433000" />
+    <option name="totallyTimeSpent" value="4165000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="256" y="23" width="991" height="724" extended-state="0" />
+    <frame x="135" y="23" width="991" height="716" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21649484" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" side_tool="true" />
-      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -329,11 +349,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/returnBook/screens/SecondScreen.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="84" column="80" lean-forward="true" selection-start-line="84" selection-start-column="80" selection-end-line="84" selection-end-column="80" />
+        <state relative-caret-position="385">
+          <caret line="94" column="6" lean-forward="true" selection-start-line="94" selection-start-column="6" selection-end-line="94" selection-end-column="6" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/library-app-raghavgr/app/auth.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="11" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="11" />
         </state>
       </provider>
     </entry>

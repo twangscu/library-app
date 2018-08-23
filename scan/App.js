@@ -92,19 +92,21 @@ export default class BarCodeReader extends Component {
     _onPressBook = () => {  //()表示輸入為空
         this.setState({allowScanBook: true})
     };
-    _onPressConfirm = () => {  //() reques.POST
+    _onPressConfirm = () => {  //() reques.PUT
+        console.log(this.state.BookData);
         Alert.alert(
-            'Comfirmed'
+            this.state.BookData.data + this.state.ReaderData.data
         );
-        fetch('https://p0kvnd5htd.execute-api.us-east-2.amazonaws.com/test/book', {
-            method: 'POST',
+        fetch('https://p0kvnd5htd.execute-api.us-east-2.amazonaws.com/test/checkout', {
+            method: 'PUT',
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                bookdata: this.state.BookData["data"],
-                readerdata: this.state.ReaderData["data"],
+                'libraryName': 'lib1',
+                'bookBarcode': this.state.BookData.data,
+                'readerdata': this.state.ReaderData.data,
             }),
         });
         this.setState({})
@@ -153,7 +155,7 @@ export default class BarCodeReader extends Component {
                                 Checkout Book:
                             </Text>
                             <Text style={{fontSize: 15}}>
-                                ISBN: {JSON.parse(this.state.BookData["data"])["ISBN"]}
+                                code: {JSON.parse(this.state.BookData["data"])}
                             </Text>
                             <Text style={{fontSize: 15}}>
                                 Title: {JSON.parse(this.state.BookData["data"])["Title"]}
@@ -169,7 +171,7 @@ export default class BarCodeReader extends Component {
                                 Customer:
                             </Text>
                             <Text style={{fontSize: 15}}>
-                                ISBN: {JSON.parse(this.state.ReaderData["data"])["ISBN"]}
+                                ISBN: {JSON.parse(this.state.ReaderData["data"])}
                             </Text>
                             <Text style={{fontSize: 15}}>
                                 Title: {JSON.parse(this.state.ReaderData["data"])["Title"]}
