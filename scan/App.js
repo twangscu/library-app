@@ -16,9 +16,9 @@ import {Constants, BarCodeScanner, Permissions} from 'expo';
 class Greeting extends Component {
     render() {
         return (
-            <View>
-                <Text style={{fontSize: 30}}>
-                    Please checkout the book.
+            <View style={styles.headerViewStyle}>
+                <Text style={styles.headerTextStyle}>
+                           Please Checkout Book
                 </Text>
             </View>
 
@@ -93,10 +93,10 @@ export default class BarCodeReader extends Component {
         this.setState({allowScanBook: true})
     };
     _onPressConfirm = () => {  //() reques.PUT
-        console.log(this.state.BookData);
-        Alert.alert(
-            this.state.BookData.data + this.state.ReaderData.data
-        );
+        // console.log(this.state.BookData);
+        // Alert.alert(
+        //     this.state.BookData.data + this.state.ReaderData.data
+        // );
         fetch('https://p0kvnd5htd.execute-api.us-east-2.amazonaws.com/test/checkout', {
             method: 'PUT',
             headers: {
@@ -105,27 +105,33 @@ export default class BarCodeReader extends Component {
             },
             body: JSON.stringify({
                 'libraryName': 'lib1',
-                'bookBarcode': this.state.BookData.data,
-                'readerdata': this.state.ReaderData.data,
+                // 'bookBarcode': this.state.BookData.data,
+                // 'readerdata': this.state.ReaderData.data,
+                'bookBarcode':'183752',
+                'readerdata':'1212',
             }),
-        });
-        this.setState({})
+        }).then((response) => {
+            if(response.status === 400){
+                console.log(response);
+                alert('Wrong information. Please scan again.');
+            }
+            else{console.log(response.status)}
+        }
+        )
     };
     render() {
         return (
             <ImageBackground source = {{uri: 'https://www.somervillepubliclibrary.org/sites/default/files/reading.png'}}
                              style={styles.backgroundStyle}>
             <View style = {styles.container}>
-                <View style={{alignItems: 'center', height: 100}}></View>
-
 
                 <View style={{alignItems: 'center', height: 100}}>
-                    <Greeting name='Xiaoxiao'/>
+                    <Greeting name='Xiao'/>
                 </View>
 
+                <View style={{alignItems: 'center', height: 100}}></View>
 
-
-                <View style={{alignItems: 'center', height: 0}}>
+                <View style={{alignItems: 'center', height: 100}}>
                     {
                         this.state.hasCameraPermission === null ?
                             <Text>Requesting for camera permission</Text> :
@@ -194,7 +200,7 @@ export default class BarCodeReader extends Component {
                                     color='rgba(4, 87, 108, 1)'
                                 />
                             }
-                            title="SACN USER"
+                            title="SCAN USER"
                             titleStyle={styles.textStyle}
                             buttonStyle= {styles.buttonStyle}
                             containerStyle={{marginTop: 20}}
@@ -212,7 +218,7 @@ export default class BarCodeReader extends Component {
                                     color='rgba(4, 87, 108, 1)'
                                 />
                             }
-                            title="SACN BOOK"
+                            title="SCAN BOOK"
                             titleStyle={styles.textStyle}
                             buttonStyle= {styles.buttonStyle}
                             containerStyle={{marginTop: 20}}
@@ -271,6 +277,29 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: 'rgba(138,187,216,0.5)',
         alignItems: 'center',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
     },
+    headerTextStyle: {
+        fontSize: 28,
+        color: '#fff',
+        fontWeight: '700'
+    },
+
+    headerViewStyle: {
+        // backgroundColor: 'rgb(51, 63, 80)',
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignSelf: 'stretch',
+        flexDirection:'row',
+        height: 80,
+        paddingTop: 5,
+        shadowColor: '#000',
+        shadowOffset: { width: 2, height: 2 },
+        shadowOpacity: 0.4,
+        elevation: 2,
+        position: 'relative',
+        flex: 1,
+        maxWidth: 700
+
+    }
 });
